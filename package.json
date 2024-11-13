@@ -1,0 +1,14 @@
+{
+  "name": "com.unigame.easyprimetween",
+  "author": "UniGame",
+  "displayName": "UniGame Modules Assembles",
+  "description": "Collection of All base UnioGame Modules",
+  "unity": "2022.1",
+  "version": "2024.0.0",
+  "keywords": [
+    "PrimeTween",
+    "Tween"
+  ],
+  "dependencies": {
+  }
+}
