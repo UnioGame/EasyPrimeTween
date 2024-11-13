@@ -28,7 +28,7 @@ Add to your project manifiest by path [%UnityProject%]/Packages/manifiest.json n
 
 ## Demo
 
-![](https://github.com/UnioGame/EasyPrimeTween/blob/master/Readme/GitAssets/easy_anim1)
+![](https://github.com/UnioGame/EasyPrimeTween/blob/main/GitAssets/easy_anim1.gif)
 
 ## License
 
