@@ -13,8 +13,6 @@ Prime Tween Inspector Animation Tool
 
 Install Prime Tween before this package - https://github.com/KyryloKuzyk/PrimeTween
 
-```
-
 ## Demo
 
 ![](https://github.com/UnioGame/EasyPrimeTween/blob/main/GitAssets/easy_anim1.gif)
