@@ -2,6 +2,8 @@
 
 Prime Tween Inspector Animation Tool
 
+author: https://github.com/TeenKo
+
 **Odin Inspector Asset recommended to usage with this Package (https://odininspector.com)**
 
 - [Easy Prime Tween](#easy-prime-tween)
@@ -16,7 +18,8 @@ Install Prime Tween before this package - https://github.com/KyryloKuzyk/PrimeTw
 ```json
 {
   "dependencies": {
-    "com.unigame.easyprimetween" : "https://github.com/UnioGame/EasyPrimeTween.git"
+    "com.unigame.easyprimetween" : "https://github.com/UnioGame/EasyPrimeTween.git",
+    "com.kyrylokuzyk.primetween": "file:../Assets/Plugins/PrimeTween/internal/com.kyrylokuzyk.primetween.tgz",
   }
 }
 ```
