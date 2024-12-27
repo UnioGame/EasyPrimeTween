@@ -17,7 +17,7 @@
         private bool ShowCycleMode()
         {
 #if UNITY_EDITOR
-            return cycles < 0;
+            return cycles is < 0 or > 1;
 #else
             return true;
 #endif
