@@ -125,5 +125,10 @@
             if (_backwardTween.isAlive)
                 _backwardTween.Stop();
         }
+
+        public void Dispose()
+        {
+            
+        }
     }
 }

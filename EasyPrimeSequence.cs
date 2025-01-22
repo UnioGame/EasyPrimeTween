@@ -124,5 +124,13 @@
         }
 
         private void OnDisable() => Stop();
+
+        private void OnDestroy()
+        {
+            foreach (var tween in tweens)
+            {
+                tween.Dispose();
+            }
+        }
     }
 }

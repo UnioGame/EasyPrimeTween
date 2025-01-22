@@ -1,9 +1,10 @@
 ﻿namespace Game.Runtime.EasyPrimeTweens.Interfaces
 {
+    using System;
     using Data;
     using PrimeTween;
 
-    public interface ITween
+    public interface ITween : IDisposable
     {
         Tween Tween { get; }
         Tween BackwardTween { get; }

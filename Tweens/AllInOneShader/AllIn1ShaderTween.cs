@@ -1,20 +1,18 @@
-﻿namespace Game.Runtime.EasyPrimeTweens.Abstract
+﻿namespace Game.Runtime.EasyPrimeTweens.Tweens
 {
+    using System;
     using Data;
     using Interfaces;
     using PrimeTween;
-    using Settings;
     using Sirenix.OdinInspector;
     using UnityEngine;
-    using UnityEngine.UI;
 
-    public class FadeTweenBase<T> : ITween where T : Graphic
+    [Serializable]
+    public class AllIn1ShaderTween : ITween
     {
-        [TabGroup("General", TextColor = "blue"), SerializeField, HideLabel]
-        private FloatTweenSettings floatTweenSettings;
-
-        [TabGroup("Animation", TextColor = "green"), SerializeField]
-        private T target;
+        [TabGroup("General", TextColor = "blue"), SerializeReference]
+        [HideLabel]
+        private IAllIn1Settings allIn1Settings;
 
         [TabGroup("Animation", TextColor = "green"), SerializeField]
         private TweenSettings<float> settings;
@@ -24,7 +22,7 @@
 
         public Tween Tween => _tween;
         public Tween BackwardTween => _backwardTween;
-        public PlayInSequenceType PlayInSequenceType => floatTweenSettings.GetPlayInSequenceType();
+        public PlayInSequenceType PlayInSequenceType => allIn1Settings.PlayInSequenceType;
 
         [ButtonGroup]
         public void Play()
@@ -52,15 +50,12 @@
         public void Reset()
         {
             StopTween();
-            CheckGeneralSettings();
-            ResetAlpha();
+            ResetPositionScale();
         }
 
-        private void ResetAlpha()
+        private void ResetPositionScale()
         {
-            var tempColor = target.color;
-            tempColor.a = settings.startValue;
-            target.color = tempColor;
+            allIn1Settings.Reset();
         }
 
         private void CreatePlayTween()
@@ -69,10 +64,8 @@
                 _backwardTween.Stop();
 
             StopTween();
-            CheckGeneralSettings();
-
-            if (Mathf.Approximately(target.color.a, settings.endValue)) return;
-
+            
+            allIn1Settings.TryCreateTween(settings.settings.duration, true);
             _tween = CreateTween(settings);
         }
 
@@ -82,27 +75,21 @@
                 _tween.Stop();
 
             StopTween();
-            CheckGeneralSettings();
 
             var newSettings = settings;
             newSettings.startValue = settings.endValue;
             newSettings.endValue = settings.startValue;
-
-            if (Mathf.Approximately(target.color.a, newSettings.endValue)) return;
-
+            
+            allIn1Settings.TryCreateTween(newSettings.settings.duration, false);
             _backwardTween = CreateTween(newSettings);
         }
 
         private Tween CreateTween(TweenSettings<float> value)
         {
-            return Tween.Alpha(target, value);
-        }
+            var mockValue = 0f;
+            var tween = Tween.Custom(value, x => mockValue = x);
 
-        private void CheckGeneralSettings()
-        {
-            if (!floatTweenSettings.From) return;
-            floatTweenSettings.SetFromValue(target.color.a);
-            settings.startValue = floatTweenSettings.FromValue;
+            return tween;
         }
 
         private void StopTween()
@@ -112,11 +99,13 @@
 
             if (_backwardTween.isAlive)
                 _backwardTween.Stop();
+
+            allIn1Settings.Stop();
         }
 
         public void Dispose()
         {
-            
+            allIn1Settings?.Dispose();
         }
     }
 }
