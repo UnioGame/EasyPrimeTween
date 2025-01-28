@@ -220,6 +220,7 @@
         public const string ClippingDown = "_ClipUvDown";
 
         // Radial Clipping
+        public const string RadialClippingOn = "RADIALCLIPPING_ON";
         public const string RadialClipAngle = "_RadialClipAngle";
         public const string RadialClip = "_RadialClip";
         public const string RadialClip2 = "_RadialClip2";
