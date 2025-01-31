@@ -17,6 +17,12 @@
     "defineConstraints": [
         "EASY_PRIME_TWEEN"
     ],
-    "versionDefines": [],
+    "versionDefines": [
+        {
+            "name": "com.kyrylokuzyk.primetween",
+            "expression": "",
+            "define": "EASY_PRIME_TWEEN"
+        }
+    ],
     "noEngineReferences": false
 }
